@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials | Croket Puppies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+	html, body {
+	    margin: 0;
+	    padding: 0;
+	    width: 100%; /* Ensure the full width is used */
+	}
+
+	.header1 {
+	    background: #27897D;
+	    color: #ffffff;
+	    padding: 5px 20px;
+	    position: fixed;
+	    width: 100%;
+	    top: 0;
+	    left: 0;
+	    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+ 	    z-index: 1000;
+	    height: 25px;
+	    font-size: 16px;
+	    text-align: left; /* Align text to the left */
+	    display: flex;
+	    align-items: center; /* Vertically align text */
+	}
+
+	header.header1 {
+	    margin: 0; /* Remove any default margin */
+	}
+
+	/* Header styling */
+	.header {
+	    background: white;
+	    color: #333;
+	    padding: 15px 20px;
+	    position: fixed;
+	    width: 100%;
+	    top: 35px;
+	    left: 0;
+	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	    z-index: 1000;
+	    display: flex;
+	    align-items: center;
+	    justify-content: space-between;
+	    transition: all 0.3s ease-in-out;
+	}
+
+	/* Logo styling */
+	.header .logo {
+	    font-size: 1.8em;
+	    font-weight: bold;
+	    text-transform: uppercase;
+	    color: #27897D;
+	    text-decoration: none;
+	    transition: transform 0.3s ease-in-out;
+	}
+
+	.header .logo:hover {
+	    transform: scale(1.1);
+	}
+
+	/* Navigation bar */
+	.navbar {
+	    display: flex;
+	    margin-right: 40px;
+	    gap: 25px;
+	}
+
+	.navbar a {
+	    font-size: 1em;
+	    color: #333;
+	    text-decoration: none;
+	    font-weight: 500;
+	    position: relative;
+	    transition: color 0.3s ease-in-out;
+	}
+
+	/* Cool hover effect */
+	.navbar a::after {
+	    content: '';
+	    position: absolute;
+	    left: 0;
+	    bottom: -4px;
+	    width: 100%;
+	    height: 3px;
+	    background-color: #27897D;
+	    transform: scaleX(0);
+	    transition: transform 0.3s ease-in-out;
+	}
+
+	.navbar a:hover {
+	    color: #27897D;
+	}
+
+	.navbar a:hover::after {
+	    transform: scaleX(1);
+	}
+
+	.navbar a.active {
+	    color: #27897D;
+	}
+
+	.navbar a.active::after {
+ 	   content: '';
+	    position: absolute;
+	    left: 0;
+	    bottom: -4px;
+	    width: 100%;
+	    height: 3px;
+	    background-color: #27897D;
+	    transform: scaleX(1); /* Ensure underline is visible */
+	    transition: transform 0.3s ease-in-out;
+	}
+
+	/* Hide mobile menu icon by default */
+	.menu-icon {
+	    display: none;
+	    font-size: 2em;
+	    cursor: pointer;
+	}
+
+	/* Rotation effect */
+	.menu-icon.active {
+	    transform: rotate(90deg);
+	}
+
+	/* Mobile Dropdown Menu */
+	.mobile-menu {
+	    display: none;
+	    position: absolute;
+	    top: 70px; 
+	    left: 0;
+	    width: 100%;
+	    background: white;
+	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	    flex-direction: column;
+	    text-align: center;
+	    padding: 10px 0;
+	}
+
+	.mobile-menu a {
+ 	   display: block;
+	    padding: 10px;
+	    color: #333;
+	    text-decoration: none;
+	    font-size: 1.2em;
+	    transition: background 0.3s;
+	}
+
+	.mobile-menu a:hover {
+	    background: #27897D;
+	    color: white;
+	}
+
+	.mid-separator {
+	    background-color: #007bff; 
+	    height: 20px;
+	    width: 100%;
+	    margin-top: 120px;
+	    padding: 0;
+	}
+
+	.mid-display {
+	    background-color: #EEE7F2;
+	    height: 80px
+	    text-align: center;
+	    padding-bottom: 10px;
+	    padding-top: 10px;
+	}
+
+	.mid-display strong {
+	    font-size: 3.2em;
+	    text-align: center;
+	}
+
+	.mid-display a {
+	    color: green;
+	    text-decoration: none; /* Removes underline */
+	}
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+/* General styles for testimonial cards */
+.testimonial-card {
+    background: #F0F0F0;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px); /* Start with cards slightly lower */
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out, box-shadow 0.3s ease-in-out;
+}
+
+.testimonial-card.visible {
+    opacity: 1;
+    transform: translateY(0); /* Move to its original position */
+}
+
+
+        .testimonial-card img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .text-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .name {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .date {
+            font-size: 14px;
+            color: #777;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .review {
+            font-size: 16px;
+            color: #555;
+        }
+
+	.footer {
+	    background: linear-gradient(135deg, #27897D, #1a1a2e);
+	    color: white;
+	    padding: 40px 20px;
+	    position: relative;
+	}
+
+	.footer-container {	
+	    display: flex;
+	    justify-content: space-between;
+	    flex-wrap: wrap;
+	    align: left;
+	}
+
+	.footer-section ul,
+	.footer-section ul li,
+	.footer-section ul li a,
+	.footer-section p {
+	    font-weight: normal;
+	}
+
+	.footer-section h3 {
+	    font-weight: bold;
+	}
+
+	.footer-section {
+	    flex: 1;
+	    padding: 20px;
+	    text-align: left;
+	}
+
+	.footer-section h3 {
+	    border-bottom: 2px solid #e74c3c;
+	    padding-bottom: 10px;
+	}
+
+	.footer-section ul {
+	    list-style: none;
+	    padding: 0;
+	}
+
+	.footer-section ul li {
+	    margin: 10px 0;
+	}
+
+	.footer-section ul li a {
+	    color: white;
+	    text-decoration: none;
+ 	    transition: color 0.3s;
+	}
+
+	.footer-section ul li a:hover {
+	    color: #e74c3c;
+	}
+
+	.socials a {
+	    color: white;
+	    margin-right: 15px;
+	    font-size: 16px;
+	    transition: color 0.3s;
+	}
+
+	.socials a:hover {
+	    color: #e74c3c;
+	}
+
+	.newsletter form {
+	    display: flex;
+	    flex-direction: column;
+	}
+
+	.newsletter input {
+	    padding: 10px;
+	    border: none;
+	    border-radius: 5px;
+	    margin-bottom: 10px;
+	}
+
+	.newsletter button {
+	    padding: 10px;
+	    background: #e74c3c;
+	    border: none;
+	    border-radius: 5px;
+	    color: white;
+	    cursor: pointer;
+	    transition: background 0.3s;
+	}
+
+	.newsletter button:hover {
+	    background: #c0392b;
+	}
+
+
+@media (max-width: 780px) {
+
+.header1 {
+font-size: 0.8em;
+}
+
+.header {
+        padding: 0px;
+    }
+.mid-separator {
+        height: 15px; /* Reduce height slightly for smaller screens */
+margin-top: 85px;
+    }
+
+    .mid-display {
+        height: auto; /* Allow content to define height */
+        padding-top: 15px; /* Adjust padding for better spacing */
+        text-align: center;
+	padding-bottom: 0;
+    }
+
+    .mid-display strong {
+        font-size: 2.2em; /* Reduce font size for better fit */
+    }
+
+    .mid-display a {
+        font-size: 0.8em; /* Adjust font size for readability */
+        display: block; /* Make it take full width for better spacing */
+    }
+
+
+
+
+
+	/* Logo styling */
+	.header .logo {
+	    font-size: 1.0em;
+	    margin-left: 10px;
+	}
+
+    .navbar {
+        display: none; /* Hide main navbar */
+    }
+
+    .menu-icon {
+        display: block; /* Show menu icon */
+	margin-right: 10px;
+    }
+
+.mobile-menu {
+    display: none; /* Initially hidden */
+    position: fixed; /* Fixed position to stay on screen */
+    top: 83px;
+    right: 5px; /* Ensure it aligns to the right */
+    left: auto; /* Prevent accidental left alignment */
+    width: 150px;
+    height: 180px;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above other elements */
+    padding: 10px;
+    border-radius: 10px 0 0 10px; /* Optional: curved edge on the left */
+}
+
+.mobile-menu {
+    transform: translateX(100%); /* Hide off-screen */
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.active {
+    display: flex;
+    transform: translateX(0); /* Slide into view */
+}
+
+
+    .mobile-menu a {
+        color: white;
+        font-size: 0.9em;
+        text-decoration: none;
+    }
+
+
+    .mobile-menu.active {
+        display: flex; /* Show menu when active */
+    }
+
+/* Cool hover effect */
+.mobile-menu a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 3px;
+    background-color: #27897D;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu a:hover {
+    color: #27897D;
+}
+	.footer-section h3 {
+	    font-size: 18px;
+	}
+
+	.container { 
+    	    max-width: 100%; /* Slightly wider for better fit */
+     	    margin: 0 auto;
+	    align-items: center;
+    	}
+
+    .testimonial-card {
+        flex-direction: column; 
+        text-align: center; 
+        padding: 20px;
+        gap: 10px;
+        max-width: 90%;
+    }
+
+    .testimonial-card img {
+        width: 120px; 
+        height: 120px;
+        margin-bottom: 10px;
+    }
+
+    .text-content {
+        text-align: center;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .date {
+        font-size: 12px;
+    }
+
+    .review {
+        font-size: 14px;
+    }
+
+.footer {
+        padding: 30px 15px;
+    }
+
+
+}
+
+
+
+    </style>
+</head>
+<body>
+
+
+
+ <header class="header1">
+<p><b>WE DELIVER!</b>    Nationwide</p>  
+    </header>
+
+<header class="header">
+    <a href="home.html" class="logo">Crocket Pupies</a>
+    <nav class="navbar">
+        <a href="home.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="testimonials.html" class="active">Testimonials</a>
+	<a href="contactus.html">Contact Us</a>
+    </nav>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <span>&#9776;</span> <!-- Unicode for Hamburger icon -->
+    </div>
+</header>
+
+<!-- Mobile Dropdown Menu -->
+<div class="mobile-menu">
+    <a href="home.html">Home</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contactus.html">Contact Us</a>
+</div>
+
+<div class="mid-separator"></div>
+<div class="mid-display">
+<strong>A+ RATING</strong> <br><b><a>with the Better Business Bureau</a><b><br>
+</div>
+<h1>What Our Clients Say</h1> <br>
+
+    <div class="container">
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t1.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Emily Johnson</div>
+        <div class="date">Austin, Texas, USA</div>
+        <div class="review">"I was initially hesitant about having a puppy delivered, but Crocket Puppies made the process seamless. Bella arrived healthy and full of energy. Highly recommend their service!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t2.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Michael Smith</div>
+        <div class="date">Toronto, Ontario, Canada</div>
+        <div class="review">"The team at Crocket Puppies is professional and caring. Our new puppy, Max, was delivered on time and in great health. Thank you for making our family complete!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t3.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Jessica Lee</div>
+        <div class="date">Seattle, Washington, USA</div>
+        <div class="review">"From the first inquiry to the delivery of our puppy, the experience was top-notch. Crocket Puppies provided regular updates and ensured Luna arrived safely."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t4.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Daniel Martinez</div>
+        <div class="date">Miami, Florida, USA</div>
+        <div class="review">"We opted for delivery, and it was the best decision. Rocky came to us happy and healthy. Crocket Puppies exceeded our expectations!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t5.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Sarah Thompson</div>
+        <div class="date">Denver, Colorado, USA</div>
+        <div class="review">"Crocket Puppies' delivery service is reliable and efficient. Our little Daisy arrived well-cared-for and ready to play. Couldn't be happier!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t6.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">David Wilson</div>
+        <div class="date">Vancouver, British Columbia, Canada</div>
+        <div class="review">"The professionalism of Crocket Puppies is unmatched. They kept us informed throughout the process, and our puppy arrived in perfect condition."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t7.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Olivia Brown</div>
+        <div class="date">Chicago, Illinois, USA</div>
+        <div class="review">"We were impressed with the care taken during the delivery of our puppy. Crocket Puppies truly cares about their animals and clients."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t8.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">James Anderson</div>
+        <div class="date">Boston, Massachusetts, USA</div>
+        <div class="review">"Our experience with Crocket Puppies was fantastic. The delivery was prompt, and our new puppy is a joy. Thank you for your excellent service!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t9.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Sophia Garcia</div>
+        <div class="date">San Francisco, California, USA</div>
+        <div class="review">"Crocket Puppies made adopting our new puppy a breeze. The delivery was smooth, and we appreciated the constant communication."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t10.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Matthew Harris</div>
+        <div class="date">Dallas, Texas, USA</div>
+        <div class="review">"We couldn't be happier with our new puppy. Crocket Puppies' delivery service was efficient, and our little one arrived safely."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t11.jpg" alt="Proof of delivery"> 
+    <div class="text-content">
+        <div class="name">Emma Robinson</div>
+        <div class="date">Phoenix, Arizona, USA</div>
+        <div class="review">"The team at Crocket Puppies is outstanding. They ensured our puppy's delivery was stress-free. Highly recommend their services!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t12.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">William Clark</div>
+        <div class="date">Portland, Oregon, USA</div>
+        <div class="review">"Adopting a puppy from Crocket Puppies was a wonderful experience. The delivery was timely, and our new family member is perfect."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t13.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Ethan Walker</div>
+        <div class="date">Nashville, Tennessee, USA</div>
+        <div class="review">"Crocket Puppies provided exceptional service. Our puppy arrived healthy and happy. We are grateful for their dedication."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t14.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Isabella Lewis</div>
+        <div class="date">Charlotte, North Carolina, USA</div>
+        <div class="review">"The delivery process was smooth, and our puppy is everything we hoped for. Thank you, Crocket Puppies, for your excellent service!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t15.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Mia Hall</div>
+        <div class="date">Columbus, Ohio, USA</div>
+        <div class="review">"We were nervous at first about buying online, but the professionalism and updates made us feel secure. The delivery was quick, and our pup is a bundle of joy!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t16.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Benjamin Young</div>
+        <div class="date">Tampa, Florida, USA</div>
+        <div class="review">"Our puppy arrived in just 3 days, super playful and healthy. The communication was excellent from start to finish. Great experience!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t17.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Amelia Allen</div>
+        <div class="date">Raleigh, North Carolina, USA</div>
+        <div class="review">"Crocket Puppies made the whole process stress-free. I appreciated the updated videos and pictures before delivery. Very trustworthy!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t18.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Logan Wright</div>
+        <div class="date">Sacramento, California, USA</div>
+        <div class="review">"We received our puppy right to our doorstep, and he came with his health papers and food guide. Everything was smooth and professional."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t19.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Charlotte King</div>
+        <div class="date">Minneapolis, Minnesota, USA</div>
+        <div class="review">"Best online pet service we’ve ever used. The delivery was faster than expected, and the puppy was clean, healthy, and well-socialized."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t20.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Jacob Scott</div>
+        <div class="date">Las Vegas, Nevada, USA</div>
+        <div class="review">"Very legit! We paid a reservation fee and the puppy arrived in 4 days as promised. We're in love with our new furry baby."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t21.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Abigail Green</div>
+        <div class="date">Edmonton, Alberta, Canada</div>
+        <div class="review">"Everything went smoothly. Delivery to Canada was quick, and we received all vet documents. Couldn’t ask for a better experience!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t22.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Lucas Baker</div>
+        <div class="date">Omaha, Nebraska, USA</div>
+        <div class="review">"Professional, friendly, and honest. We received photo updates during the wait and our puppy arrived right on time!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t23.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Harper Nelson</div>
+        <div class="date">Tulsa, Oklahoma, USA</div>
+        <div class="review">"I was amazed at how easy it was to place an order. Delivery was done in 3 days and everything matched what was advertised."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t24.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Elijah Adams</div>
+        <div class="date">Lexington, Kentucky, USA</div>
+        <div class="review">"Customer service was top-notch. They answered all our questions, and the delivery was faster than expected."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t25.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Avery Mitchell</div>
+        <div class="date">Boise, Idaho, USA</div>
+        <div class="review">"Very reliable team. We had the option to pick up, but delivery was much more convenient and well-handled."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t26.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Henry Carter</div>
+        <div class="date">Milwaukee, Wisconsin, USA</div>
+        <div class="review">"The delivery was quick, and our puppy was healthy, vaccinated, and ready to go. Definitely a trustworthy source."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t27.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Luna Perez</div>
+        <div class="date">Halifax, Nova Scotia, Canada</div>
+        <div class="review">"I was worried about delivery from another country, but everything went smoothly. The puppy arrived with a calm and loving attitude."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t28.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Jackson Bell</div>
+        <div class="date">Atlanta, Georgia, USA</div>
+        <div class="review">"Everything from ordering to delivery was professionally done. We now have the most adorable pup, thanks to Crocket Puppies."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t29.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Grace Murphy</div>
+        <div class="date">Anchorage, Alaska, USA</div>
+        <div class="review">"Delivery to Alaska isn’t easy, but Crocket Puppies handled it wonderfully. My pup arrived in great health!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t30.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Sebastian Rivera</div>
+        <div class="date">Pittsburgh, Pennsylvania, USA</div>
+        <div class="review">"They answered all my questions, provided extra photos, and the delivery was exactly as they promised. Amazing service."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t31.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Victoria Reed</div>
+        <div class="date">Salt Lake City, Utah, USA</div>
+        <div class="review">"Crocket Puppies kept us in the loop the whole time. Delivery was smooth and on time. Super legit and caring team."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t32.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Joseph Wood</div>
+        <div class="date">Kansas City, Missouri, USA</div>
+        <div class="review">"Very transparent and trustworthy. Our new puppy arrived within 2 days after payment. The entire process felt safe and genuine."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t33.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Nora Russell</div>
+        <div class="date">Richmond, Virginia, USA</div>
+        <div class="review">"I liked that they sent updated videos of my puppy until delivery. Shows they really care and are not some scam site."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t34.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Owen Bennett</div>
+        <div class="date">Des Moines, Iowa, USA</div>
+        <div class="review">"They were very responsive and supportive. We were able to receive our puppy without any issues. Truly amazing people."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t35.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Zoey Turner</div>
+        <div class="date">Spokane, Washington, USA</div>
+        <div class="review">"Delivery was faster than expected, and they made sure our pup was comfortable during transport. Super legit and sweet service!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t36.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Caleb Hughes</div>
+        <div class="date">Little Rock, Arkansas, USA</div>
+        <div class="review">"They gave us everything we needed to feel confident – including vet records and delivery tracking. Love our new pup!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t37.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Lily Simmons</div>
+        <div class="date">St. Louis, Missouri, USA</div>
+        <div class="review">"Amazing experience! They even helped us choose the right breed for our family. Our puppy came delivered with love."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t38.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Nathan Morris</div>
+        <div class="date">Jacksonville, Florida, USA</div>
+        <div class="review">"Quick response, clear instructions, and timely delivery. Couldn't believe how smooth the whole process was!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t39.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Chloe Watson</div>
+        <div class="date">San Jose, California, USA</div>
+        <div class="review">"The delivery was done in 2 days and the pup was even cuter in person. We’re grateful for such a responsible team."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t40.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Isaac Campbell</div>
+        <div class="date">New Orleans, Louisiana, USA</div>
+        <div class="review">"They kept their word on everything — from updated videos to fast delivery. So happy with our healthy little guy!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t41.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Vanessa Marie Cole</div>
+        <div class="date">Baltimore, Maryland, USA</div>
+        <div class="review">"We surprised our daughter for her 10th birthday with a puppy from Crocket Puppies, and she hasn’t stopped smiling since! He’s already part of the family."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t42.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Jonathan Paul Edwards</div>
+        <div class="date">Calgary, Alberta, Canada</div>
+        <div class="review">"The entire adoption and delivery process was smooth and easy. I was impressed by the communication and care they provided."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t43.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Lillian Grace Peters</div>
+        <div class="date">Orlando, Florida, USA</div>
+        <div class="review">"Crocket Puppies delivered our little Coco right to our door. She was clean, playful, and clearly loved. Great experience!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t44.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Anthony James Carter</div>
+        <div class="date">Montreal, Quebec, Canada</div>
+        <div class="review">"I bought the puppy for my son, and they’re inseparable now. The delivery was professional and quick. Worth every penny!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t45.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Natalie Jean Foster</div>
+        <div class="date">San Jose, California, USA</div>
+        <div class="review">"We were looking for a reliable puppy delivery service, and Crocket Puppies did not disappoint. Our girl is perfect!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t46.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Mark Timothy Bennett</div>
+        <div class="date">Winnipeg, Manitoba, Canada</div>
+        <div class="review">"Our puppy came with all the documents and was super friendly from day one. Couldn’t ask for better service."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t47.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Chloe Annabelle Scott</div>
+        <div class="date">Indianapolis, Indiana, USA</div>
+        <div class="review">"My husband and I are thrilled with our new puppy. Thank you, Crocket Puppies, for making this such a positive experience!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t48.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Owen Jacob Hamilton</div>
+        <div class="date">Halifax, Nova Scotia, Canada</div>
+        <div class="review">"We had our doubts buying online, but this team was trustworthy from start to finish. Our puppy is doing amazing."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t49.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Amara Faith Gonzalez</div>
+        <div class="date">St. Louis, Missouri, USA</div>
+        <div class="review">"We got our pup for our two kids, and they instantly fell in love. She arrived healthy and full of energy. Thank you!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t50.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Christopher Alan Monroe</div>
+        <div class="date">Anchorage, Alaska, USA</div>
+        <div class="review">"Very professional service. I received frequent updates and even a photo before delivery. Highly recommend."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t51.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Isla Rose Armstrong</div>
+        <div class="date">Quebec City, Quebec, Canada</div>
+        <div class="review">"My daughter was overjoyed to receive her puppy. It was the best gift we could have given her, and the delivery was perfect."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t52.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Liam Alexander Rhodes</div>
+        <div class="date">Detroit, Michigan, USA</div>
+        <div class="review">"If you’re unsure, don’t be. This service is the real deal. They handled everything with such care."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t53.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Zoe Madeline Hart</div>
+        <div class="date">Kansas City, Kansas, USA</div>
+        <div class="review">"Our son named the puppy Buddy and they’ve been best friends ever since. The whole process was smooth and safe."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t54.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Noah Sebastian Reed</div>
+        <div class="date">Ottawa, Ontario, Canada</div>
+        <div class="review">"Our puppy arrived well-fed, clean, and with a happy little bark. Crocket Puppies really goes the extra mile."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t55.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Ruby Elaine Morgan</div>
+        <div class="date">Louisville, Kentucky, USA</div>
+        <div class="review">"I’ve recommended this company to three friends already. Our pup has the sweetest personality!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t56.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Elijah Thomas Burke</div>
+        <div class="date">Fresno, California, USA</div>
+        <div class="review">"Very responsive customer service. They answered all my questions and delivered our pup right on time."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t57.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Penelope June Rivera</div>
+        <div class="date">Hamilton, Ontario, Canada</div>
+        <div class="review">"I was a little nervous having a puppy shipped, but everything went perfectly. She's so loving and smart!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t58.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Thomas William Everett</div>
+        <div class="date">Boise, Idaho, USA</div>
+        <div class="review">"The attention to detail in the delivery and care instructions was impressive. A+ service."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t59.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Sophie Caroline Hayes</div>
+        <div class="date">Newark, New Jersey, USA</div>
+        <div class="review">"Our puppy was a surprise for our twins, and they’re beyond happy. She arrived clean, fed, and playful."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t60.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Gabriel Daniel Stone</div>
+        <div class="date">Richmond, Virginia, USA</div>
+        <div class="review">"I would absolutely buy again from Crocket Puppies. This was a five-star experience all around."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t61.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Megan Elise Parker</div>
+        <div class="date">Birmingham, Alabama, USA</div>
+        <div class="review">"We surprised our 10-year-old daughter with a puppy from Crocket Puppies, and the look on her face was priceless. Everything was handled professionally. Thank you!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t62.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Aaron George Daniels</div>
+        <div class="date">Halifax, Nova Scotia, Canada</div>
+        <div class="review">"I’m genuinely impressed with how smooth the process was. Delivery was on time, and the pup was even cuter than in the photos!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t63.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Kimberly Rose Bennett</div>
+        <div class="date">Boise, Idaho, USA</div>
+        <div class="review">"We were very skeptical, but Crocket Puppies delivered above and beyond. Healthy puppy, vaccination records, and quick responses to all our questions."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t64.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Javier Luis Mendoza</div>
+        <div class="date">San Antonio, Texas, USA</div>
+        <div class="review">"Our little Milo is already a neighborhood star! Great service and very transparent communication. We’ll be recommending you to friends."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t65.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Catherine Amelia Hunt</div>
+        <div class="date">Louisville, Kentucky, USA</div>
+        <div class="review">"We adopted Daisy for our two sons, and she's already their best friend. The delivery was quick and safe. Truly grateful!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t66.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Brandon Kyle Monroe</div>
+        <div class="date">Windsor, Ontario, Canada</div>
+        <div class="review">"Top-notch service and communication! The whole process was so easy, and our pup adjusted quickly to his new home."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t67.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Riley Madison Chambers</div>
+        <div class="date">Atlanta, Georgia, USA</div>
+        <div class="review">"Highly recommend for anyone buying a puppy online. We received videos before delivery and regular check-ins after. Amazing experience!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t68.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Carlos Benjamin Silva</div>
+        <div class="date">El Paso, Texas, USA</div>
+        <div class="review">"Penny was a birthday gift for my daughter, and she hasn’t stopped smiling since. Crocket Puppies delivered everything as promised."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t69.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Alicia Marie Patterson</div>
+        <div class="date">Des Moines, Iowa, USA</div>
+        <div class="review">"Our puppy came in great condition with clear instructions and a vet check report. It’s clear these people care about the animals!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t70.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Nathan Isaiah Cooper</div>
+        <div class="date">Baltimore, Maryland, USA</div>
+        <div class="review">"Crocket Puppies made the adoption process easy, and their team was so supportive. Our pup settled in instantly!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t71.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Chelsea Brooke Whitman</div>
+        <div class="date">Madison, Wisconsin, USA</div>
+        <div class="review">"What stood out was the care they put into delivery. Our puppy came in a crate with toys, food, and full health records. Amazing service!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t72.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Jeremiah Nathan Brooks</div>
+        <div class="date">Hamilton, Ontario, Canada</div>
+        <div class="review">"I’ve bought pets online before, but this was the most professional and trustworthy experience I’ve had. 100% satisfied!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t73.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Hailey Savannah Long</div>
+        <div class="date">Little Rock, Arkansas, USA</div>
+        <div class="review">"We surprised our twins with a puppy and couldn’t be happier. Crocket Puppies went above and beyond to make it special."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t74.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Anthony Elijah Vargas</div>
+        <div class="date">Fresno, California, USA</div>
+        <div class="review">"Everything from start to finish was handled with such care. Our puppy is now part of the family, and we couldn’t be happier."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t75.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Tiffany Danielle Rhodes</div>
+        <div class="date">Tulsa, Oklahoma, USA</div>
+        <div class="review">"I did a lot of research before choosing Crocket Puppies, and I’m glad I did. You can tell they care about where their puppies go."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t76.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Dominic Julian Reed</div>
+        <div class="date">Anchorage, Alaska, USA</div>
+        <div class="review">"Even way up here in Alaska, they delivered right to our door. No delays and the puppy was perfect. Highly recommend!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t77.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Vanessa Joy Caldwell</div>
+        <div class="date">Buffalo, New York, USA</div>
+        <div class="review">"We named her Cookie, and she’s the sweetest thing ever. Thank you for being so helpful and patient through the process."</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t78.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">George Leonard Fischer</div>
+        <div class="date">Richmond, Virginia, USA</div>
+        <div class="review">"The videos before delivery gave us so much confidence. And when she arrived, it was love at first sight!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t79.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Natalie Rae Armstrong</div>
+        <div class="date">Honolulu, Hawaii, USA</div>
+        <div class="review">"We were concerned about delivery all the way to Hawaii, but everything was handled professionally. Puppy arrived safe, happy, and healthy!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t80.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Colton Matthew Grayson</div>
+        <div class="date">Detroit, Michigan, USA</div>
+        <div class="review">"Couldn’t believe how fast the delivery was. Excellent updates and no hidden fees. Great experience all around!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t81.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Sophie Marie Clark</div>
+        <div class="date">Chicago, Illinois, USA</div>
+        <div class="review">"Our puppy arrived healthy and happy! The entire process was so smooth, and the staff kept us updated every step of the way. We couldn’t be more pleased!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t82.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Zachary James Sullivan</div>
+        <div class="date">Vancouver, British Columbia, Canada</div>
+        <div class="review">"Fantastic service from start to finish! The puppy arrived in excellent condition, and we felt well-supported throughout the entire process. Highly recommend!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t83.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Isabella Grace Phillips</div>
+        <div class="date">Portland, Oregon, USA</div>
+        <div class="review">"We’ve been looking for the perfect pup, and Crocket Puppies made it happen. Our little guy is a bundle of joy, and we can’t thank you enough!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t84.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Liam Alexander Grant</div>
+        <div class="date">Calgary, Alberta, Canada</div>
+        <div class="review">"Such a wonderful experience! The communication was excellent, and our puppy arrived happy and healthy. Would definitely buy again!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t85.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Olivia Sarah Mitchell</div>
+        <div class="date">Minneapolis, Minnesota, USA</div>
+        <div class="review">"We were so impressed by the level of care and professionalism. Our puppy adjusted to her new home right away, and we’re so happy!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t86.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Henry Thomas Stewart</div>
+        <div class="date">Ottawa, Ontario, Canada</div>
+        <div class="review">"The entire experience was seamless. The puppy arrived safe and sound, and Crocket Puppies kept us informed from start to finish!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t87.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Charlotte Lily Taylor</div>
+        <div class="date">Las Vegas, Nevada, USA</div>
+        <div class="review">"Our new puppy is the best thing to happen to our family! Crocket Puppies made the process so easy and stress-free. We’re forever grateful!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t88.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Jack Harrison Lee</div>
+        <div class="date">Montreal, Quebec, Canada</div>
+        <div class="review">"This was the most seamless online pet adoption experience we’ve had. Our puppy arrived exactly as expected, and we couldn’t be happier with our new family member!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t89.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Ava Marie Brooks</div>
+        <div class="date">San Diego, California, USA</div>
+        <div class="review">"The entire team was so caring and attentive. Our puppy is adjusting wonderfully, and we’re so thankful for Crocket Puppies’ exceptional service!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t90.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Joshua Ryan Thomas</div>
+        <div class="date">Toronto, Ontario, Canada</div>
+        <div class="review">"I can’t express how grateful we are. The puppy was delivered in perfect condition, and the process was easy and stress-free. Thank you!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t91.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Emily Elizabeth Williams</div>
+        <div class="date">New York City, New York, USA</div>
+        <div class="review">"Our new puppy is perfect! The delivery was on time, and the customer service was outstanding. We’ve had such a positive experience!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t92.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Lucas Michael Harris</div>
+        <div class="date">Calgary, Alberta, Canada</div>
+        <div class="review">"I was nervous about buying a puppy online, but Crocket Puppies exceeded all my expectations. The puppy is healthy and happy, and we’re so glad we chose them!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t93.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Sophia Rose Jackson</div>
+        <div class="date">Denver, Colorado, USA</div>
+        <div class="review">"The team at Crocket Puppies is top-notch. Our puppy arrived in great condition, and the entire process was handled with care. Highly recommend!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t94.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Matthew Elijah White</div>
+        <div class="date">Boston, Massachusetts, USA</div>
+        <div class="review">"This was the easiest pet adoption experience I’ve ever had. From start to finish, everything was handled with the utmost professionalism. Thank you!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t95.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Chloe Grace Walker</div>
+        <div class="date">Seattle, Washington, USA</div>
+        <div class="review">"We were so impressed with how smoothly everything went. Our puppy arrived healthy and happy, and we’re over the moon with the experience!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t96.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">James Alexander Martin</div>
+        <div class="date">Montreal, Quebec, Canada</div>
+        <div class="review">"The delivery was quick, and our puppy is in perfect health. Crocket Puppies truly went above and beyond. We couldn’t be happier!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t97.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Zoe Grace Richardson</div>
+        <div class="date">Phoenix, Arizona, USA</div>
+        <div class="review">"Our experience was fantastic from start to finish. The puppy arrived healthy, and we’re so happy with our new family member!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t98.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Ethan Christopher Cooper</div>
+        <div class="date">Ottawa, Ontario, Canada</div>
+        <div class="review">"Amazing service and a wonderful puppy! The entire experience was easy, and I couldn’t be more pleased. I would recommend Crocket Puppies to anyone!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t99.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Mason Benjamin Carter</div>
+        <div class="date">Nashville, Tennessee, USA</div>
+        <div class="review">"Our new puppy has brought so much joy to our family. Crocket Puppies made the process seamless, and we’re so grateful for the experience!"</div>
+    </div>
+</div>
+
+<div class="testimonial-card">
+    <img src="https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/t100.jpg" alt="Proof of delivery">
+    <div class="text-content">
+        <div class="name">Lily Grace Walker</div>
+        <div class="date">Halifax, Nova Scotia, Canada</div>
+        <div class="review">"The team at Crocket Puppies made the adoption process so easy. Our puppy is perfect, and we couldn’t be happier with the service provided!"</div>
+    </div>
+</div>
+
+
+
+    </div>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section about">
+            <h3>Crocket Pupies LLC</h3>
+            <ul>
+		<li>2502 Wade Hampton Blvd,</li>
+	        <li>Greenville, SC 29615</li>
+		<li>USA</li>
+	   </ul>
+        </div>
+        <div class="footer-section links">
+    <h3>Quick Links</h3>
+    <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+	<li><a href="contactus.html">Contact Us</a></li>
+    </ul>
+</div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+	    <p id="footer-email">Email: crocketpuppies@gmail.com</p>
+	    <p id="footer-contact">Phone: </p>
+            
+        </div>
+        <div class="footer-section newsletter">
+            <h3>Newsletter</h3>
+            <p>Subscribe to receive helpful tips for every level of owners!.</p>
+            <form id="newsletter-form">
+                <input id="subscribe-newsletter" type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2011 - 2025 Crocket Pupies LLC / All Rights Reserved</p>
+    </div>
+</footer>
+
+
+    <script>
+
+function toggleMenu() {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const menuIcon = document.querySelector('.menu-icon');
+
+    // Toggle the menu visibility
+    mobileMenu.classList.toggle('active');
+
+    // Add rotation effect
+    menuIcon.classList.toggle('active');
+}
+
+// Close menu when a link is clicked
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.mobile-menu').classList.remove('active');
+        document.querySelector('.menu-icon').classList.remove('active'); // Reset rotation
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (event) => {
+    const menu = document.querySelector('.mobile-menu');
+    const icon = document.querySelector('.menu-icon');
+
+    if (!menu.contains(event.target) && !icon.contains(event.target)) {
+        menu.classList.remove('active');
+        icon.classList.remove('active'); // Reset rotation
+    }
+});
+
+</script>
+
+<script>
+// Initialize Intersection Observer
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Add the 'visible' class when the card comes into view
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // Stop observing once the animation is triggered
+        }
+    });
+}, { threshold: 0.5 }); // Trigger when 50% of the card is in view
+
+// Observe each testimonial card
+document.querySelectorAll('.testimonial-card').forEach(card => {
+    observer.observe(card);
+});
+
+</script>
+
+
+</body>
+</html>

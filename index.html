@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crocket Puppies | Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+
+	html, body {
+	    margin: 0;
+	    padding: 0;
+	    width: 100%; /* Ensure the full width is used */
+	}
+
+	.header1 {
+	    background: #27897D;
+	    color: #ffffff;
+	    padding: 5px 20px;
+	    position: fixed;
+	    width: 100%;
+	    top: 0;
+	    left: 0;
+	    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	    z-index: 1000;
+	    height: 25px;
+	    font-size: 16px;
+	    text-align: left; /* Align text to the left */
+	    display: flex;
+	    align-items: center; /* Vertically align text */
+	}
+
+	header.header1 {
+	    margin: 0; /* Remove any default margin */
+	}
+
+	/* Header styling */
+	.header {
+	    background: white;
+	    color: #333;
+	    padding: 15px 20px;
+	    position: fixed;
+	    width: 100%;
+	    top: 35px;
+	    left: 0;
+	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	    z-index: 1000;
+	    display: flex;
+	    align-items: center;
+	    justify-content: space-between;
+	    transition: all 0.3s ease-in-out;
+	}
+
+	/* Logo styling */
+	.header .logo {
+	    font-size: 1.8em;
+	    font-weight: bold;
+	    text-transform: uppercase;
+	    color: #27897D;
+	    text-decoration: none;
+	    transition: transform 0.3s ease-in-out;
+	}
+
+	.header .logo:hover {
+	    transform: scale(1.1);
+	}
+
+	/* Navigation bar */
+	.navbar {
+	    display: flex;
+	    margin-right: 40px;
+	    gap: 25px;
+	}
+
+	.navbar a {
+	    font-size: 1em;
+	    color: #333;
+	    text-decoration: none;
+	    font-weight: 500;
+	    position: relative;
+	    transition: color 0.3s ease-in-out;
+	}
+
+	/* Cool hover effect */
+	.navbar a::after {
+	    content: '';
+	    position: absolute;
+	    left: 0;
+	    bottom: -4px;
+	    width: 100%;
+	    height: 3px;
+	    background-color: #27897D;
+	    transform: scaleX(0);
+	    transition: transform 0.3s ease-in-out;
+	}
+
+	.navbar a:hover {
+	    color: #27897D;
+	}
+
+	.navbar a:hover::after {
+	    transform: scaleX(1);
+	}
+
+
+	.navbar a.active {
+	    color: #27897D;
+	}
+
+	.navbar a.active::after {
+	    content: '';
+	    position: absolute;
+	    left: 0;
+	    bottom: -4px;
+	    width: 100%;
+	    height: 3px;
+	    background-color: #27897D;
+	    transform: scaleX(1); /* Ensure underline is visible */
+	    transition: transform 0.3s ease-in-out;
+	}
+
+
+	/* Hide mobile menu icon by default */
+	.menu-icon {
+	    display: none;
+	    font-size: 2em;
+	    cursor: pointer;
+	}
+
+	/* Rotation effect */
+	.menu-icon.active {
+	    transform: rotate(90deg);
+	}
+
+	/* Mobile Dropdown Menu */
+	.mobile-menu {
+	    display: none;
+	    position: absolute;
+	    top: 70px; /* Below header */
+	    left: 0;
+	    width: 100%;
+	    background: white;
+	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	    flex-direction: column;
+	    text-align: center;
+	    padding: 10px 0;
+	}
+
+	.mobile-menu a {
+	    display: block;
+	    padding: 10px;
+	    color: #333;
+	    text-decoration: none;
+	    font-size: 1.2em;
+	    transition: background 0.3s;
+	}
+
+	.mobile-menu a:hover {
+	    background: #27897D;
+	    color: white;
+	}
+
+	.top-display {
+	    width: 100%;
+	    height: 100vh;
+	    margin-top: 80px;
+	    padding: 0;
+	    position: relative;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    text-align: center;
+	    color: #fff;
+	}
+
+	.top-display video {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    object-fit: cover; /* Ensures video fills the div without distortion */
+	    z-index: -1; /* Moves the video behind the content */
+	}
+
+        .top-display h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .top-display p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .top-ordernow-btn {
+            background-color: #007bff; /* Facebook blue */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .top-ordernow-btn:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+
+	.mid-separator {
+	    background-color: #007bff; /* Facebook blue */
+	    height: 20px;
+	    width: 100%;
+	    margin: 0;
+	    padding: 0;
+	}
+
+	.mid-display {
+	    background-color: #EEE7F2;
+	    height: 80px
+	    text-align: center;
+	    padding-bottom: 10px;
+	    padding-top: 10px;
+	}
+
+	.mid-display strong {
+	    font-size: 3.2em;
+	    text-align: center;
+	}
+
+	.mid-display a {
+	    color: green;
+	    text-decoration: none; /* Removes underline */
+	}
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+	@media (max-width: 1024px) {
+	.container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        }
+@media (max-width: 1024px) { 
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+@media (max-width: 780px) { 
+    .puppy-card img {
+        width: 100%;
+        height: 300px; /* Slightly reduce height */
+object-fit: cover;
+}
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Ensure two columns */
+        gap: 8px; 
+        padding: 5px;
+    }
+
+    .puppy-card {
+        padding: 8px;
+        border-radius: 8px;
+        font-size: 12px; /* Reduce font size for small screens */
+    }
+
+
+.puppy-price {
+    color: black;
+    font-size: 14px; /* Adjust size as needed */
+    font-weight: bold;
+}
+
+
+    .puppy-info {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .puppy-name {
+        font-size: 14px;
+    }
+
+    .puppy-price {
+        font-size: 16px;
+    }
+
+    .status {
+        font-size: 12px;
+        padding: 1px 4px;
+    }
+}
+
+
+
+.puppy-card {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    border: 1px solid #A9A9A9;
+    transition: transform 0.3s ease-in-out;
+}
+
+.puppy-card:hover {
+    transform: scale(1.05);
+    border: 1px solid #27897D;
+}
+
+
+        .puppy-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+            background-color: #e0e0e0;
+        }
+        .puppy-info {
+            font-size: 14px;
+	    text-align: left;
+        }
+        .puppy-name.female {
+            color: #F083C0;
+            font-weight: bold;
+	    text-align: center;
+        }
+        .puppy-name.male {
+            color: #7CBCE8;
+	    text-align: center;
+        }
+        .puppy-details {
+            color: #0C92DA;
+	    text-align: center;
+        }
+    .puppy-card.reserved {
+        border: 2px solid red !important;
+        pointer-events: none; /* Makes the card unclickable */
+        opacity: 0.6; /* Optional: Makes it appear disabled */
+    }
+.puppy-price {
+    color: black;
+    font-size: 18px; /* Adjust size as needed */
+    font-weight: bold;
+}
+
+.status.available {
+    color: white;
+    background-color: green;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+.status.unavailable {
+    color: white;
+    background-color: red;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+        .status-id {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .copy-id {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+
+.topic {
+    font-family: 'Poppins', sans-serif; /* Modern and clean font */
+    font-size: 1.5em; /* Adjust size for readability */
+    color: black; /* Text color */
+    text-align: center; /* Center text */
+    font-weight: 500; /* Medium weight for good readability */
+    margin: 20px auto;
+    max-width: 80%; /* Prevent text from stretching too wide */
+}
+
+.topic strong {
+    color: green; /* Make 'Available Now' green */
+    font-weight: bold; /* Bold styling */
+}
+
+.topic small {
+    color: grey; /* Make 'Available Now' green */
+    font-size: 0.8em;
+}
+
+
+        .faq {
+            padding-left: 20px; /* Adjusted for responsiveness */
+            padding-right: 20px; /* Adjusted for responsiveness */
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #D6E3E4;
+            text-align: center;
+	    margin: 0px;
+        }
+
+        table {
+	
+            width: 100%;
+            padding: 20px; /* Adjusted for responsiveness */
+            margin-bottom: 40px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #9A9A9A;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .question {
+            cursor: pointer;
+        }
+
+        .answer {
+            display: none;
+	    color: black;
+	    font-weight: normal;
+        }
+
+        .plus-minus::before {
+            content: '+';
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .minus::before {
+            content: '-';
+        }
+
+
+	.footer {
+	    background: linear-gradient(135deg, #27897D, #1a1a2e);
+	    color: white;
+	    padding: 40px 20px;
+	    position: relative;
+	}
+
+	.footer-container {	
+	    display: flex;
+	    justify-content: space-between;
+	    flex-wrap: wrap;
+	    align: left;
+	}
+
+	.footer-section ul,
+	.footer-section ul li,
+	.footer-section ul li a,
+	.footer-section p {
+	    font-weight: normal;
+	}
+
+	.footer-section h3 {
+	    font-weight: bold;
+	}
+
+
+	.footer-section {
+	    flex: 1;
+	    padding: 20px;
+	    text-align: left;
+	}
+
+	.footer-section h3 {
+	    border-bottom: 2px solid #e74c3c;
+	    padding-bottom: 10px;
+	}
+
+	.footer-section ul {
+	    list-style: none;
+	    padding: 0;
+	}
+
+	.footer-section ul li {
+	    margin: 10px 0;
+	}
+
+	.footer-section ul li a {
+	    color: white;
+	    text-decoration: none;
+ 	    transition: color 0.3s;
+	}
+
+	.footer-section ul li a:hover {
+	    color: #e74c3c;
+	}
+
+	.socials a {
+	    color: white;
+	    margin-right: 15px;
+	    font-size: 16px;
+	    transition: color 0.3s;
+	}
+
+	.socials a:hover {
+	    color: #e74c3c;
+	}
+
+	.newsletter form {
+	    display: flex;
+	    flex-direction: column;
+	}
+
+	.newsletter input {
+	    padding: 10px;
+	    border: none;
+	    border-radius: 5px;
+	    margin-bottom: 10px;
+	}
+
+	.newsletter button {
+	    padding: 10px;
+	    background: #e74c3c;
+	    border: none;
+	    border-radius: 5px;
+	    color: white;
+	    cursor: pointer;
+	    transition: background 0.3s;
+	}
+
+	.newsletter button:hover {
+	    background: #c0392b;
+	}
+
+
+
+
+@media (max-width: 780px) {
+
+    .top-display {
+        height: 70vh; /* Reduce height for smaller screens */
+        flex-direction: column; /* Stack elements vertically */
+        width: 100vw; /* Ensure it takes the full viewport width */
+        overflow: hidden; /* Prevent any unintended overflow */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .top-display h1 {
+        font-size: 2em; /* Reduce font size */
+        margin-bottom: 10px;
+    }
+
+    .top-display p {
+        font-size: 1em; /* Reduce paragraph font size */
+        margin-bottom: 15px;
+        padding: 0 15px; /* Add padding for better readability */
+    }
+
+    .top-ordernow-btn {
+        font-size: 0.9em; /* Reduce button font size */
+        padding: 8px 15px; /* Adjust button size */
+    }
+
+    .top-display video {
+        width: 100vw; /* Make sure the video covers the entire width */
+        height: 100%; /* Ensure video still covers full height */
+        object-fit: cover; /* Prevent distortion */
+        position: absolute; /* Ensure it's positioned correctly */
+        top: 0;
+        left: 0;
+    }
+
+.mid-separator {
+        height: 15px; /* Reduce height slightly for smaller screens */
+    }
+
+    .mid-display {
+        height: auto; /* Allow content to define height */
+        padding-top: 15px; /* Adjust padding for better spacing */
+        text-align: center;
+padding-bottom: 0;
+    }
+
+    .mid-display strong {
+        font-size: 2.2em; /* Reduce font size for better fit */
+    }
+
+    .mid-display a {
+        font-size: 0.8em; /* Adjust font size for readability */
+        display: block; /* Make it take full width for better spacing */
+    }
+
+ .topic {
+        font-size: 1.0em; 
+        max-width: 100%; 
+        margin: 15px auto; 
+    }
+
+    .topic strong {
+        font-size: 1.1em; /* Slightly reduce the bold text size */
+    }
+
+    .topic small {
+        font-size: 0.7em; /* Reduce the small text size slightly */
+    }
+
+        .container {
+            margin: 25px auto;
+        }
+
+        .faq {
+            padding-left: 20px; /* Adjusted for responsiveness */
+            padding-right: 20px; /* Adjusted for responsiveness */
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #D6E3E4;
+            text-align: center;
+	    margin-top: 20px;
+            max-width: 100%
+        }
+
+        table {
+            max-width: 100%;
+            padding: 20px; /* Adjusted for responsiveness */
+            margin-bottom: 40px;
+            border-collapse: collapse;
+        }
+        .question {
+            font-size: 0.8em;
+        }
+
+        .answer {
+            font-size: 0.8em;
+        }
+
+
+.header1 {
+font-size: 0.8em;
+}
+
+.header {
+        padding: 0px;
+    }
+
+
+
+/* Logo styling */
+.header .logo {
+    font-size: 1.0em;
+margin-left: 10px;
+}
+
+    .navbar {
+        display: none; /* Hide main navbar */
+    }
+
+    .menu-icon {
+        display: block; /* Show menu icon */
+	margin-right: 10px;
+    }
+
+.mobile-menu {
+    display: none; /* Initially hidden */
+    position: fixed; /* Fixed position to stay on screen */
+    top: 83px;
+    right: 5px; /* Ensure it aligns to the right */
+    left: auto; /* Prevent accidental left alignment */
+    width: 150px;
+    height: 180px;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above other elements */
+    padding: 10px;
+    border-radius: 10px 0 0 10px; /* Optional: curved edge on the left */
+}
+
+.mobile-menu {
+    transform: translateX(100%); /* Hide off-screen */
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.active {
+    display: flex;
+    transform: translateX(0); /* Slide into view */
+}
+
+
+    .mobile-menu a {
+        color: white;
+        font-size: 0.9em;
+        text-decoration: none;
+    }
+
+
+    .mobile-menu.active {
+        display: flex; /* Show menu when active */
+    }
+
+/* Cool hover effect */
+.mobile-menu a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 3px;
+    background-color: #27897D;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu a:hover {
+    color: #27897D;
+}
+	.footer-section h3 {
+	    font-size: 18px;
+	}
+
+.footer {
+        padding: 30px 15px;
+    }
+
+}
+
+
+    </style>
+</head>
+<body>
+
+ <header class="header1">
+<p><b>WE DELIVER!</b>    Nationwide</p>  
+    </header>
+
+<header class="header">
+    <a href="#" class="logo">Crocket Pupies</a>
+    <nav class="navbar">
+        <a href="home.html" class="active">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="testimonials.html">Testimonials</a>
+	<a href="contactus.html">Contact Us</a>
+    </nav>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <span>&#9776;</span> <!-- Unicode for Hamburger icon -->
+    </div>
+</header>
+
+<!-- Mobile Dropdown Menu -->
+<div class="mobile-menu">
+    <a href="home.html">Home</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contactus.html">Contact Us</a>
+</div>
+
+    <div class="top-display">
+<video autoplay muted loop class="background-video">
+        <source src="p68.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+	<div class="top-display-content">
+            <h2>Find Your New Best Friend</h2>
+            <p>Healthy & happy puppies<br>Ready to bring joy to your home.</p>
+            <a href="#ordernow" class="top-ordernow-btn">View Available Puppies</a>
+        </div>
+    </div>
+
+<div class="mid-separator"></div>
+<div class="mid-display">
+<strong>A+ RATING</strong> <br><b><a>with the Better Business Bureau</a><b><br>
+</div>
+
+<div class="topic">
+    Puppies marked <strong>‘Available Now’</strong> are ready for immediate delivery or pick-up.<br>
+    <small>The Prices shown includes all taxes, vaccinations, and vet-care before Adoption Day</small>
+</div>
+
+    <div class="container" id="puppyContainer"></div>
+
+<div class="faq"> 
+<h3 style="color: black;">FAQ - Frequently Asked Questions</h3>
+
+<table>
+    <tbody>
+
+        <tr>
+            <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                <span class="plus-minus"></span>
+                <b>Do you deliver puppies?</b>
+            </td>
+        </tr>
+        <tr class="answer">
+            <td>
+                <b>Yes!</b> We deliver puppies nationwide within the U.S. and also to Canada. We charge a flat-rate delivery fee of <b>$200</b>. Deliveries are safe, vet-cleared, and handled with love and care. 🐾
+            </td>
+        </tr>
+
+        <tr>
+            <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                <span class="plus-minus"></span>
+                <b>Can I pick up the puppy myself?</b>
+            </td>
+        </tr>
+        <tr class="answer">
+            <td>
+                <b>Yes, you can!</b> We welcome pickup arrangements. However, a <b>$500 reservation fee</b> is required in advance to secure your puppy and cover veterinary and preparation costs before the pickup date.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                <span class="plus-minus"></span>
+                <b>What does the $500 reservation fee cover?</b>
+            </td>
+        </tr>
+        <tr class="answer">
+            <td>
+                This fee helps cover veterinary checkups, vaccinations, deworming, and care essentials prior to pickup. It also secures your chosen puppy exclusively for you until the agreed pickup date.
+            </td>
+        </tr>
+
+	<tr>
+                <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                    <span class="plus-minus"></span>
+                    <b>What’s included when I purchase a puppy from Crocket Puppies?</b>
+                </td>
+            </tr>
+            <tr class="answer">
+                <td>
+                    Each purchase includes: <br>
+                    ✅ Health Certificate<br>
+                    ✅ Vaccination Records<br>
+                    ✅ Microchip (if requested)<br>
+                    ✅ Starter Kit (food, toy, and blanket with mom's scent)<br>
+                    ✅ One-year health guarantee
+                </td>
+	</tr>
+
+        <tr>
+            <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                <span class="plus-minus"></span>
+                <b>How do I know this is not a scam?</b>
+            </td>
+        </tr>
+        <tr class="answer">
+            <td>
+                Great question! We are a verified U.S.-based breeder with years of experience and many happy customers. You can find reviews and testimonials from our past clients on the <a style="font-color: blue" href="testimonials.html">Testimonials</a> Section. 🌟
+            </td>
+        </tr>
+
+
+	<tr>
+                <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                    <span class="plus-minus"></span>
+                    <b>Do you offer any support after purchase?</b>
+                </td>
+            </tr>
+            <tr class="answer">
+                <td>
+                    Yes! We’re always here for you. You’ll receive guidance on puppy care, feeding schedules, and training tips. Our team is just a call or message away even after your puppy arrives home.
+                </td>
+            </tr>
+
+
+	<tr>
+	    <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+	        <span class="plus-minus"></span>
+	        <b>How do I reserve a puppy?</b>
+	    </td>
+	</tr>
+	<tr class="answer">
+	    <td>
+	        ✅ Click on your preferred puppy in the <b><a href="home.html" class="active">Home</a></b> page to open the order page.<br>
+	        ✅ View more recent photos and a video of the puppy.<br>
+	        ✅ Fill out the order form with your details and preferences, then Submit the Form.<br>
+	        ✅ We’ll contact via Text within Few minutes with payment details to complete your order.<br>
+	        ✅ Proceed with payment.<br>
+	        ✅ Delivery takes 2–5 business days after payment.<br>
+	    </td>
+	</tr>
+        
+	<tr>
+            <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                <span class="plus-minus"></span>
+                <b>What methods of payment do you accept?</b>
+            </td>
+        </tr>
+        <tr class="answer">
+            <td>
+                We accept bank transfers, Zelle, Cash App, PayPal (friends & family). All transactions are securely documented, and receipts are issued for every payment.
+            </td>
+        </tr>
+
+        <tr>
+            <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                <span class="plus-minus"></span>
+                <b>Are your puppies vaccinated?</b>
+            </td>
+        </tr>
+        <tr class="answer">
+            <td>
+                <b>Absolutely</b>. All our puppies come with up-to-date vaccinations, deworming, and a full health record from a licensed vet. You will receive complete documentation upon delivery or pickup.
+            </td>
+        </tr>
+
+
+        <tr>
+            <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                <span class="plus-minus"></span>
+                <b>When will I receive my puppy after payment?</b>
+            </td>
+        </tr>
+        <tr class="answer">
+            <td>
+                Once payment is confirmed, delivery is scheduled within 2–5 business days. For pickups, we agree on a suitable date after the $500 reservation fee is received.
+            </td>
+        </tr>
+
+
+    </tbody>
+</table>
+</div>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section about">
+            <h3>Crocket Pupies LLC</h3>
+            <ul>
+		<li>2502 Wade Hampton Blvd,</li>
+	        <li>Greenville, SC 29615</li>
+		<li>USA</li>
+	   </ul>
+        </div>
+        <div class="footer-section links">
+    <h3>Quick Links</h3>
+    <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+	<li><a href="contactus.html">Contact Us</a></li>
+    </ul>
+</div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+	    <p id="footer-email">Email: crocketpuppies@gmail.com</p>
+	    <p id="footer-contact">Phone: </p>
+            
+        </div>
+        <div class="footer-section newsletter">
+            <h3>Newsletter</h3>
+            <p>Subscribe to receive helpful tips for every level of owners!.</p>
+            <form id="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2011 - 2025 Crocket Pupies LLC / All Rights Reserved</p>
+    </div>
+</footer>
+
+    
+    <script>
+        const puppies = [
+            { id: "001", name: "Leslie", breed: "Bernedoodle", gender: "F", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p11.jpg", price: "$1,800" },
+            { id: "002", name: "Einstein", breed: "Bernedoodle", gender: "M", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p12.webp", price: "$2,400" },
+            { id: "003", name: "Posey", breed: "Goldendoodle", gender: "F", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p13.webp", price: "$1,900" },
+            { id: "004", name: "Max", breed: "11 Week Old <br>Goldendoodle", gender: "M", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p14.webp", price: "$1,900" },
+            { id: "005", name: "Bernard", breed: "Bernedoodle", gender: "M", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p15.webp", price: "$2,300" },
+            { id: "006", name: "Rainbow", breed: "7 Week Old <br>Goldendoodle", gender: "F", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p16.webp", price: "$2,300" },
+            { id: "007", name: "Jackpot", breed: "7 Week Old <br>Goldendoodle", gender: "M", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p17.webp", price: "$2,400" },
+            { id: "008", name: "Granite", breed: "7 Week Old <br>Maltipoo", gender: "M", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p18.webp", price: "$1,600" },
+            { id: "009", name: "Wonder Woof", breed: "11 Week Old <br>Cavapoo", gender: "F", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p19.webp", price: "$1,600" },
+            { id: "010", name: "Destiny", breed: "8 Week Old <br>Goldendoodle", gender: "F", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p110.webp", price: "$1,900" },
+            { id: "011", name: "Sam", breed: "7 Week Old <br>Goldendoodle", gender: "M", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p111.webp", price: "$2,300" },
+            { id: "012", name: "Patrick", breed: "7 Week Old <br>Goldendoodle", gender: "M", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p112.webp", price: "$1,500" },
+            { id: "013", name: "Iris", breed: "8 Week Old <br>Bernedoodle", gender: "M", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p113.webp", price: "$3,200" },
+            { id: "014", name: "Crunch", breed: "9 Week Old <br>Medium Labradoodle", gender: "M", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p114.webp", price: "$1,600" },
+            { id: "015", name: "Toby", breed: "9 Week Old <br>Medium Labradoodle", gender: "M", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p115.webp", price: "$2,300"},
+            { id: "016", name: "Rosie", breed: "8 Week Old <br>Mini Bernedoodle", gender: "F", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p116.webp", price: "$2,600" },
+            { id: "017", name: "Georgia", breed: "8 Week Old <br>Standard St.Berdoodle", gender: "F", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p117.webp", price: "$2,400" },
+            { id: "018", name: "Arizona", breed: "8 Week Old <br>Standard St.Berdoodle", gender: "F", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p118.webp", price: "$2,700" },
+            { id: "019", name: "Hobbes", breed: "8 Week Old <br>Mini Goldendoodle", gender: "M", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p119.webp", price: "$2,100" },
+            { id: "P020", name: "Wendy", breed: "8 Week Old <br>Maltipoo", gender: "F", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p120.webp", price: "$2,300" },
+	    { id: "021", name: "Netty", breed: "9 Week Old <br>Petite Cavapoo", gender: "F", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p121.webp", price: "$2,600" },
+            { id: "022", name: "Georgia", breed: "8 Week Old <br>Standard St.Berdoodle", gender: "F", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p117.webp", price: "$2,400" },
+            { id: "031", name: "Rita", breed: "11 Week Old <br>Petite Cavapoo", gender: "F", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p131.webp", price: "$1,400" },
+            { id: "032", name: "Clover", breed: "8 Week Old <br>Petite Cavapoo", gender: "F", status: "Available Now", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p132.webp", price: "$2,400" },
+
+
+	    { id: " ", name: " ", breed: "8 Week Old <br>Standard St.Berdoodle", gender: "F", status: "Reserved", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p123.webp", price: " " },
+            { id: " ", name: " ", breed: "8 Week Old <br>Mini Goldendoodle", gender: "M", status: "Reserved", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p124.webp", price: " "},
+	    { id: " ", name: " ", breed: "8 Week Old <br>Mini Bernedoodle", gender: "F", status: "Reserved", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p125.webp", price: " "},
+            { id: " ", name: " ", breed: "8 Week Old <br>Standard St.Berdoodle", gender: "F", status: "Reserved", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p126.webp", price: " " },
+            { id: " ", name: " ", breed: "8 Week Old <br>Standard St.Berdoodle", gender: "F", status: "Reserved", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p127.webp", price: " " },
+            { id: " ", name: " ", breed: "8 Week Old <br>Mini Goldendoodle", gender: "M", status: "Reserved", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p128.webp", price: " "},
+	    { id: " ", name: " ", breed: "8 Week Old <br>Standard St.Berdoodle", gender: "F", status: "Reserved", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p129.webp", price: " " },
+            { id: " ", name: " ", breed: "8 Week Old <br>Mini Goldendoodle", gender: "M", status: "Reserved", image: "https://pub-db81e8c6a0d541e0a1490ba1b85fda5a.r2.dev/p130.webp", price: " " }
+  
+        ];
+
+        const container = document.getElementById("puppyContainer");
+
+
+        puppies.forEach(puppy => {
+            const card = document.createElement("div");
+            card.className = "puppy-card";
+
+        card.classList.add("puppy-card");
+
+        // If the puppy is Reserved, apply the reserved class
+        if (puppy.status.toLowerCase().includes("reserved")) {
+            card.classList.add("reserved");
+        }
+            card.innerHTML = `
+    <img src="${puppy.image}" alt="${puppy.name}">
+    <div class="puppy-info">
+        <div class="status-id">
+            <span><strong>ID:</strong> <span class="copy-id" onclick="copyID('${puppy.id}')">${puppy.id}</span></span>
+            <span class="status ${puppy.status === 'Available Now' ? 'available' : 'unavailable'}">${puppy.status}</span>
+        </div>
+        <p class="puppy-details">${puppy.breed} ( ${puppy.gender} )<br>
+        <b class="puppy-name ${puppy.gender === 'F' ? 'female' : 'male'}">${puppy.name}</b><br>
+        <strong class="puppy-price">${puppy.price}</strong></p> 
+    </div>
+`;
+
+        card.addEventListener("click", () => {
+            sessionStorage.setItem("selectedPuppyID", puppy.id);
+            window.location.href = "orderpage.html";
+        });
+
+
+
+            container.appendChild(card);
+        });
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".top-ordernow-btn").addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default anchor behavior
+
+        const firstCard = document.querySelector('.puppy-card'); // First puppy card
+        const header = document.querySelector('.header'); // Header element
+        let headerHeight = header ? header.offsetHeight : 0; // Get header height, avoid errors if null
+        let additionalOffset = 10; // Default offset for all screens
+
+        // Adjust offset dynamically based on screen width
+        if (window.innerWidth <= 780) {
+            headerHeight += 30; // Mobile-specific offset
+        } else {
+            headerHeight += 50; // Larger screens get a bigger offset
+            additionalOffset = 20; // Adjust for larger screens
+        }
+
+        if (firstCard) {
+            window.scrollTo({
+                top: firstCard.offsetTop - headerHeight - additionalOffset, // Adjust offset
+                behavior: "smooth"
+            });
+        }
+    });
+});
+
+function toggleMenu() {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const menuIcon = document.querySelector('.menu-icon');
+
+    // Toggle the menu visibility
+    mobileMenu.classList.toggle('active');
+
+    // Add rotation effect
+    menuIcon.classList.toggle('active');
+}
+
+// Close menu when a link is clicked
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.mobile-menu').classList.remove('active');
+        document.querySelector('.menu-icon').classList.remove('active'); // Reset rotation
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (event) => {
+    const menu = document.querySelector('.mobile-menu');
+    const icon = document.querySelector('.menu-icon');
+
+    if (!menu.contains(event.target) && !icon.contains(event.target)) {
+        menu.classList.remove('active');
+        icon.classList.remove('active'); // Reset rotation
+    }
+});
+
+
+//used for working faqs
+   function toggleAnswer(element) {
+        const answerRow = element.parentNode.nextElementSibling;
+        const plusMinus = element.querySelector('.plus-minus');
+
+        if (answerRow.style.display === 'table-row') {
+            answerRow.style.display = 'none';
+            plusMinus.classList.remove('minus');
+        } else {
+            answerRow.style.display = 'table-row';
+            plusMinus.classList.add('minus');
+        }
+    }
+
+        function copyID(id) {
+            navigator.clipboard.writeText(id).then(() => {
+                alert("Puppy ID " + id + " copied!");
+            });
+
+        }
+    </script>
+
+
+</body>
+</html>

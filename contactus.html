@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Croket Puppies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+.header1 {
+    background: #27897D;
+    color: #ffffff;
+    padding: 5px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    height: 25px;
+font-size: 16px;
+    text-align: left; /* Align text to the left */
+    display: flex;
+    align-items: center; /* Vertically align text */
+}
+
+header.header1 {
+    margin: 0; /* Remove any default margin */
+}
+
+/* Header styling */
+.header {
+    background: white;
+    color: #333;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    top: 35px;
+    left: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Logo styling */
+.header .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #27897D;
+    text-decoration: none;
+    transition: transform 0.3s ease-in-out;
+}
+
+.header .logo:hover {
+    transform: scale(1.1);
+}
+
+/* Navigation bar */
+.navbar {
+    display: flex;
+margin-right: 40px;
+    gap: 25px;
+}
+
+.navbar a {
+    font-size: 1em;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Cool hover effect */
+.navbar a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 3px;
+    background-color: #27897D;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    color: #27897D;
+}
+
+.navbar a:hover::after {
+    transform: scaleX(1);
+}
+
+.navbar a.active {
+    color: #27897D;
+}
+
+.navbar a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 3px;
+    background-color: #27897D;
+    transform: scaleX(1); /* Ensure underline is visible */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hide mobile menu icon by default */
+.menu-icon {
+    display: none;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+/* Rotation effect */
+.menu-icon.active {
+    transform: rotate(90deg);
+}
+
+/* Mobile Dropdown Menu */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 70px; /* Below header */
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: background 0.3s;
+}
+
+.mobile-menu a:hover {
+    background: #27897D;
+    color: white;
+}
+
+
+        /* Mid Separator */
+        .mid-separator {
+            background-color: #007bff;
+            height: 20px;
+            max-width: 100%;
+            margin-top: 120px;
+            padding: 5px;
+        }
+
+        /* Mid Display Section */
+        .mid-display {
+            background-color: #EEE7F2;
+            text-align: center;
+            padding-top: 10px;
+	    padding-bottom: 5px;
+        }
+
+    #toast {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 10px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+    }
+    
+    #toast.show {
+        visibility: visible;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+        .mid-display strong {
+            font-size: 2.0em;
+            display: block;
+            color: #333;
+        }
+
+        /* Green Captivating Text */
+        .mid-display p {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: green;
+            margin-top: 0px;
+        }
+        .container {
+            max-width: 90%;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            background: linear-gradient(135deg, #f8f8f8, #ffffff);
+        }
+
+        .container h1 {
+            color: #ff6600;
+            font-family: 'Georgia', serif;
+        }
+
+        .container p {
+            line-height: 1.6;
+            color: #444;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="text"], input[type="tel"], input[type="email"], textarea {
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .agree-container {
+            margin-bottom: 15px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #27897D, #1a1a2e);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #e65c00;
+        }
+
+
+
+	.footer {
+	    background: linear-gradient(135deg, #27897D, #1a1a2e);
+	    color: white;
+	    padding: 40px 20px;
+	    position: relative;
+	}
+
+	.footer-container {	
+	    display: flex;
+	    justify-content: space-between;
+	    flex-wrap: wrap;
+	    align: left;
+	}
+
+	.footer-section ul,
+	.footer-section ul li,
+	.footer-section ul li a,
+	.footer-section p {
+	    font-weight: normal;
+	}
+
+	.footer-section h3 {
+	    font-weight: bold;
+	}
+
+	.footer-bottom p{
+	    font-weight: bold;
+	    text-align: center;
+	}
+
+	.footer-section {
+	    flex: 1;
+	    padding: 20px;
+	    text-align: left;
+	}
+
+	.footer-section h3 {
+	    border-bottom: 2px solid #e74c3c;
+	    padding-bottom: 10px;
+	}
+
+	.footer-section ul {
+	    list-style: none;
+	    padding: 0;
+	}
+
+	.footer-section ul li {
+	    margin: 10px 0;
+	}
+
+	.footer-section ul li a {
+	    color: white;
+	    text-decoration: none;
+ 	    transition: color 0.3s;
+	}
+
+	.footer-section ul li a:hover {
+	    color: #e74c3c;
+	}
+
+	.socials a {
+	    color: white;
+	    margin-right: 15px;
+	    font-size: 16px;
+	    transition: color 0.3s;
+	}
+
+	.socials a:hover {
+	    color: #e74c3c;
+	}
+
+	.newsletter form {
+	    display: flex;
+	    flex-direction: column;
+	}
+
+	.newsletter input {
+	    padding: 10px;
+	    border: none;
+	    border-radius: 5px;
+	    margin-bottom: 10px;
+	}
+
+	.newsletter button {
+	    padding: 10px;
+	    background: #e74c3c;
+	    border: none;
+	    border-radius: 5px;
+	    color: white;
+	    cursor: pointer;
+	    transition: background 0.3s;
+	}
+
+	.newsletter button:hover {
+	    background: #c0392b;
+	}
+
+
+        @media (max-width: 780px) {
+.header1 {
+font-size: 0.8em;
+}
+
+	.header {
+            padding: 0px;
+    	}
+	.mid-separator {
+            height: 15px; /* Reduce height slightly for smaller screens */
+	    margin-top: 85px;
+    	}
+
+    .mid-display {
+        height: auto; /* Allow content to define height */
+        padding-top: 15px; /* Adjust padding for better spacing */
+        text-align: center;
+padding-bottom: 2px;
+    }
+
+    .mid-display strong {
+        font-size: 1.5em; /* Reduce font size for better fit */
+    }
+
+    .mid-display p {
+        font-size: 0.8em;
+    }
+
+/* Logo styling */
+.header .logo {
+    font-size: 1.0em;
+margin-left: 10px;
+}
+.header1 {
+font-size: 0.8em;
+}
+
+.header {
+        padding: 0px;
+    }
+
+
+
+/* Logo styling */
+.header .logo {
+    font-size: 1.0em;
+margin-left: 10px;
+}
+
+    .navbar {
+        display: none; /* Hide main navbar */
+    }
+
+    .menu-icon {
+        display: block; /* Show menu icon */
+	margin-right: 10px;
+    }
+
+.mobile-menu {
+    display: none; /* Initially hidden */
+    position: fixed; /* Fixed position to stay on screen */
+    top: 83px;
+    right: 5px; /* Ensure it aligns to the right */
+    left: auto; /* Prevent accidental left alignment */
+    width: 150px;
+    height: 180px;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above other elements */
+    padding: 10px;
+    border-radius: 10px 0 0 10px; /* Optional: curved edge on the left */
+}
+
+.mobile-menu {
+    transform: translateX(100%); /* Hide off-screen */
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.active {
+    display: flex;
+    transform: translateX(0); /* Slide into view */
+}
+
+
+    .mobile-menu a {
+        color: white;
+        font-size: 0.9em;
+        text-decoration: none;
+    }
+
+
+    .mobile-menu.active {
+        display: flex; /* Show menu when active */
+    }
+
+/* Cool hover effect */
+.mobile-menu a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 3px;
+    background-color: #27897D;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu a:hover {
+    color: #27897D;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 10px 0; /* Adjust spacing */
+    text-align: center;
+}
+
+
+    .container {
+        max-width: 90%;
+margin: 10px;
+font-size: 0.9em;
+    }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header1">
+    <p><b>WE DELIVER!</b> Nationwide</p>
+</header>
+
+<header class="header">
+    <a href="home.html" class="logo">Crocket Puppies</a>
+    <nav class="navbar">
+        <a href="home.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="contactus.html" class="active">Contact Us</a>
+    </nav>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <span>&#9776;</span>
+    </div>
+</header>
+
+<div class="mobile-menu">
+    <a href="home.html">Home</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contactus.html">Contact Us</a>
+</div>
+
+<div class="mid-separator"></div>
+
+<div class="mid-display">
+    <strong>Contact Us</strong>
+    <p>Reach out with any questions.<br>We will be happy to reply as soon as we can!</p>
+</div>
+
+
+<div class="container">
+    <p>We'd love to hear from you! Please fill out the form below, and we'll get back to you via email, phone, or SMS.</p>
+
+<form id="contactForm">
+
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required placeholder="Enter your Full name">
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your Email">
+
+	<label for="phone">Phone Number</label>
+	<input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+
+        <label for="question">Your Question</label>
+        <textarea id="question" name="question" required placeholder="Enter your question / Message"></textarea>
+
+        <div class="agree-container">
+            <input type="checkbox" id="agree" name="agree" required>
+            <label for="agree"><b>I Agree</b> to be contacted by Email or Text Message as per your privacy policy.</label>
+        </div>
+
+        <button type="submit" id="submit-btn"  class="button">Send Message</button>
+
+    </form>
+
+<div class="toast" id="toast"></div>
+</div>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section about">
+            <h3>Crocket Pupies LLC</h3>
+            <ul>
+		<li>2502 Wade Hampton Blvd,</li>
+	        <li>Greenville, SC 29615</li>
+		<li>USA</li>
+	   </ul>
+        </div>
+        <div class="footer-section links">
+    <h3>Quick Links</h3>
+    <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+	<li><a href="contactus.html">Contact Us</a></li>
+    </ul>
+</div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+	    <p style="color: white;" id="footer-email">Email: crocketpuppies@gmail.com</p>
+	    <p id="footer-contact">Phone: </p>            
+        </div>
+
+        <div class="footer-section newsletter">
+            <h3>Newsletter</h3>
+            <p style="color: white;">Subscribe to receive helpful tips for every level of owners!.</p>
+            <form id="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p style="color: white;">&copy; 2011 - 2025 Crocket Pupies LLC / All Rights Reserved</p>
+    </div>
+</footer>
+
+
+<script>
+
+function toggleMenu() {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const menuIcon = document.querySelector('.menu-icon');
+
+    // Toggle the menu visibility
+    mobileMenu.classList.toggle('active');
+
+    // Add rotation effect
+    menuIcon.classList.toggle('active');
+}
+
+// Close menu when a link is clicked
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.mobile-menu').classList.remove('active');
+        document.querySelector('.menu-icon').classList.remove('active'); // Reset rotation
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (event) => {
+    const menu = document.querySelector('.mobile-menu');
+    const icon = document.querySelector('.menu-icon');
+
+    if (!menu.contains(event.target) && !icon.contains(event.target)) {
+        menu.classList.remove('active');
+        icon.classList.remove('active'); // Reset rotation
+    }
+});
+
+
+  const form = document.getElementById('contactForm');
+  const toast = document.getElementById('toast');
+
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const phone = document.getElementById('phone');
+    const question = document.getElementById('question');
+    const agree = document.getElementById('agree');
+
+    if (!name.value.trim()) {
+      name.focus();
+      return showToast('Please enter your full name');
+    }
+    if (!email.value.trim()) {
+      email.focus();
+      return showToast('Please enter your email address');
+    }
+    if (!phone.value.trim()) {
+      phone.focus();
+      return showToast('Please enter your phone number');
+    }
+    if (!question.value.trim()) {
+      question.focus();
+      return showToast('Please enter your question or message');
+    }
+    if (!agree.checked) {
+      agree.focus();
+      return showToast('Please agree to be contacted');
+    }
+
+    // Google Form endpoint and matching entry fields
+    const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLScSYP9JinbWSH6osIO6IS5WWcyOgybwr80bRj2yXj17Em1n1w/formResponse';
+
+    const formData = new FormData();
+    formData.append('entry.823285305', name.value);
+    formData.append('entry.593098212', email.value);
+    formData.append('entry.433663542', phone.value);
+    formData.append('entry.366289247', question.value);
+
+    fetch("https://docs.google.com/forms/d/e/1FAIpQLScSYP9JinbWSH6osIO6IS5WWcyOgybwr80bRj2yXj17Em1n1w/formResponse", {
+      method: 'POST',
+      body: formData
+    }).then(() => {
+      showToast('Message sent successfully!');
+      form.reset();
+    }).catch(() => {
+      showToast('Error sending message.');
+    });
+  });
+</script>
+
+
+
+</body>
+</html>
