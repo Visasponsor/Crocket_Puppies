@@ -80,6 +80,14 @@
 	    color: #27897D;
 	    text-decoration: none;
 	    transition: transform 0.3s ease-in-out;
+	    display: flex;               
+	    align-items: center;   
+	}
+	.logo-img {
+	    width: 40px;
+	    height: 40px;
+	    object-fit: contain;
+	    margin-right: 5px;
 	}
 
 	.header .logo:hover {
@@ -670,6 +678,12 @@ font-size: 0.8em;
 margin-left: 10px;
 }
 
+.logo-img {
+	width: 30px;
+	height: 30px;
+	object-fit: contain;
+	margin-right: 2px;
+}
     .navbar {
         display: none; 
     }
@@ -751,7 +765,8 @@ margin-left: 10px;
     </header>
 
 <header class="header">
-    <a href="#" class="logo">Crocket Pupies</a>
+    <a href="index.html" class="logo">
+    <img src="cp1.png" alt="Crocket Puppies Logo" class="logo-img">Crocket Pupies</a>
     <nav class="navbar">
         <a href="index.html" class="active">Home</a>
         <a href="aboutus.html">About Us</a>
