@@ -684,7 +684,7 @@
    <div class="gallery">
         <button class="prev" onclick="prevMedia()">&#10094;</button>
         <img id="puppyImage" src="" alt="Puppy">
-        <video id="puppyVideo" controls style="display: none;">
+        <video id="puppyVideo" controls playsinline webkit-playsinline  style="display: none;">
             <source id="videoSource" src="" type="video/mp4">
         </video>
         <button class="next" onclick="nextMedia()">&#10095;</button>
@@ -944,6 +944,10 @@ function updateMedia() {
 
     // Set initial media on page load
     updateMedia();
+
+	const video = document.getElementById('puppyVideo');
+video.setAttribute('playsinline', '');
+video.setAttribute('webkit-playsinline', '');
 
     function prevMedia() {
         mediaIndex = (mediaIndex - 1 + mediaArray.length) % mediaArray.length;
