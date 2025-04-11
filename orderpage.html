@@ -945,10 +945,6 @@ function updateMedia() {
     // Set initial media on page load
     updateMedia();
 
-	const video = document.getElementById('puppyVideo');
-video.setAttribute('playsinline', '');
-video.setAttribute('webkit-playsinline', '');
-
     function prevMedia() {
         mediaIndex = (mediaIndex - 1 + mediaArray.length) % mediaArray.length;
         updateMedia();
